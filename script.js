@@ -1,18 +1,17 @@
 const nodeFactory = (content) => {
-  const value = content || null;
-  const nextNode = null;
-
+  const value = content || null,
+    nextNode = null;
   return { value, nextNode };
 };
 
 const linkedListFactory = () => {
-  let length = 0;
-  let headPointer = {};
-  let tailPointer = {};
+  let length = 0,
+    headPointer = {},
+    tailPointer = {};
 
   const append = (value) => {
-    let newNode = nodeFactory(value);
-    let temp = {};
+    let newNode = nodeFactory(value),
+      temp = {};
 
     if (length == 0) {
       headPointer.value = value;
@@ -43,17 +42,11 @@ const linkedListFactory = () => {
     length++;
   };
 
-  const size = () => {
-    return length;
-  };
+  const size = () => length;
 
-  const head = () => {
-    return headPointer;
-  };
+  const head = () => headPointer;
 
-  const tail = () => {
-    return tailPointer;
-  };
+  const tail = () => tailPointer;
 
   const at = (index) => {
     let temp = headPointer;
@@ -64,6 +57,7 @@ const linkedListFactory = () => {
 
     return temp;
   };
+
   const pop = () => {
     tailPointer = at(size() - 2);
     tailPointer.nextNode = null;
@@ -93,9 +87,9 @@ const linkedListFactory = () => {
   };
 
   const find = (value) => {
-    let temp = headPointer;
-    let count = 0;
-    let arr = [];
+    let temp = headPointer,
+      count = 0,
+      arr = [];
 
     for (let i = 0; i < length; i++) {
       if (temp.value == value) {
@@ -108,16 +102,12 @@ const linkedListFactory = () => {
       }
     }
 
-    if (arr.length == 0) {
-      return null;
-    } else {
-      return arr;
-    }
+    return arr.length == 0 ? null : arr;
   };
 
   const toString = () => {
-    let temp = headPointer;
-    let result = '';
+    let temp = headPointer,
+      result = '';
 
     for (let i = 0; i < length; i++) {
       if (length == 0) {
@@ -145,9 +135,9 @@ const linkedListFactory = () => {
     } else if (index == 0) {
       append(value);
     } else {
-      let previous = at(index - 1);
-      let temp = at(index);
-      let newNode = nodeFactory(value);
+      let previous = at(index - 1),
+        temp = at(index),
+        newNode = nodeFactory(value);
 
       previous.nextNode = newNode;
       newNode.nextNode = temp;
@@ -157,12 +147,11 @@ const linkedListFactory = () => {
   };
 
   const removeAt = (index) => {
+    let previous, post;
+
     if (index > length) {
       return `invalid index must be between 0 and ${size()}`;
     }
-
-    let previous;
-    let post;
 
     if (index > 0) {
       previous = at(index - 1);
@@ -177,8 +166,6 @@ const linkedListFactory = () => {
   };
 
   return {
-    headPointer,
-    tailPointer,
     length,
     append,
     prepend,
@@ -197,12 +184,7 @@ const linkedListFactory = () => {
 
 const LinkedList = linkedListFactory();
 
-LinkedList.append(1);
-LinkedList.append(873);
-LinkedList.append(123);
-LinkedList.append(123);
-LinkedList.append(12);
-LinkedList.prepend(9923);
-LinkedList.append(123);
-LinkedList.append(821);
-LinkedList.append(13);
+LinkedList.append(2);
+LinkedList.append(2);
+LinkedList.append(1232);
+LinkedList.append(932);
