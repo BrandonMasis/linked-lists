@@ -14,8 +14,7 @@ const linkedListFactory = () => {
       temp = {};
 
     if (length == 0) {
-      headPointer.value = value;
-      headPointer.nextNode = null;
+      headPointer = newNode;
       tailPointer = headPointer;
     } else {
       temp = headPointer;
@@ -30,8 +29,7 @@ const linkedListFactory = () => {
     let newNode = nodeFactory(value);
 
     if (length == 0) {
-      headPointer.value = value;
-      headPointer.nextNode = null;
+      headPointer = newNode;
       tailPointer = headPointer;
     } else {
       temp = tailPointer;
@@ -114,15 +112,19 @@ const linkedListFactory = () => {
         result = `null`;
       }
 
-      if (temp.nextNode) {
-        if (i == 0) {
-          result += `(HEAD ${temp.value}) -> `;
-        } else {
-          result += `(${temp.value}) -> `;
-        }
-        temp = temp.nextNode;
+      if (length == 1) {
+        result = `(HEAD ${temp.value} TAIL) -> NULL`;
       } else {
-        result += `(${temp.value} TAIL) -> NULL`;
+        if (temp.nextNode) {
+          if (i == 0) {
+            result += `(HEAD ${temp.value}) -> `;
+          } else {
+            result += `(${temp.value}) -> `;
+          }
+          temp = temp.nextNode;
+        } else {
+          result += `(${temp.value} TAIL) -> NULL`;
+        }
       }
     }
 
